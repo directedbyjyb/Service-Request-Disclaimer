@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .message-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .message-box h1 {
+            margin: 0 0 15px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .message-box p {
+            margin: 0 0 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+            color: #555;
+        }
+
+        .message-box button {
+            padding: 12px 25px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .message-box button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .message-box button:active {
+            background-color: #004494;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h1>Disclaimer</h1>
+        <p id="disclaimer-text">Loading disclaimer...</p>
+        <button onclick="proceed()">Proceed</button>
+    </div>
+    <script>
+        function proceed() {
+            window.open("https://www.youtube.com", "_blank"); // Replace with your desired URL
+        }
+
+        async function fetchDisclaimer() {
+            const docId = '1Lz02184bIAwJnC5DkKp-CfDKHpNwAuU-HwZ9xN_lAK8'; // Replace with your Google Doc ID
+            const url = `https://docs.google.com/document/d/${docId}/export?format=txt`;
+
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                document.getElementById('disclaimer-text').innerText = text;
+            } catch (error) {
+                document.getElementById('disclaimer-text').innerText = 'Failed to load disclaimer.';
+                console.error('Error fetching disclaimer:', error);
+            }
+        }
+
+        fetchDisclaimer();
+    </script>
+</body>
+</html>
