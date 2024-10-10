@@ -20,9 +20,9 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: left; /* Change from center to left */
             max-width: 400px;
             width: 100%;
+            text-align: center; /* Center align the message box content */
         }
 
         .message-box h1 {
@@ -31,13 +31,14 @@
             color: #333;
         }
 
-        .message-box p {
+        .disclaimer-text {
             margin: 0 0 20px;
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #fafafa;
             color: #555;
+            text-align: left; /* Left align the disclaimer text */
         }
 
         .message-box button {
@@ -65,7 +66,7 @@
 <body>
     <div class="message-box">
         <h1>Disclaimer</h1>
-        <p id="disclaimer-text">Loading disclaimer...</p>
+        <p id="disclaimer-text" class="disclaimer-text">Loading disclaimer...</p>
         <button onclick="proceed()">Proceed</button>
     </div>
     <script>
